@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Davinder Singh | Android &amp; Full-Stack Developer (MCA)</title>
+    <meta
+      name="description"
+      content="Davinder Singh is an MCA student at Punjabi University, Patiala. Android developer (Kotlin, Jetpack Compose) with Python and PostgreSQL projects, looking for a software development internship."
+    />
+    <meta name="author" content="Davinder Singh" />
+    <meta name="theme-color" content="#0a0b0d" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Social sharing. Add og:url and a canonical link once the production domain is known (see README). -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Davinder Singh | Android &amp; Full-Stack Developer (MCA)" />
+    <meta
+      property="og:description"
+      content="Android apps and database-driven systems: SubGuard (Kotlin, Jetpack Compose), Hospital Management System (Flask, PostgreSQL) and more."
+    />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      // Runs before first paint: enables reveal animations only when JS works, and applies the saved theme.
+      document.documentElement.classList.add('js')
+      try {
+        var t = localStorage.getItem('ds-portfolio-theme')
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t)
+      } catch (e) {}
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Davinder Singh",
+        "sameAs": ["https://github.com/dsrolly", "https://www.linkedin.com/in/dsrolly"]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <p style="padding: 24px; font-family: system-ui, sans-serif">
+        Davinder Singh, MCA student and Android / full-stack developer. Email: ds.infoquest@gmail.com ·
+        GitHub: github.com/dsrolly · LinkedIn: linkedin.com/in/dsrolly. Please enable JavaScript to view the full
+        portfolio.
+      </p>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

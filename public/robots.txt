@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# After you know your production URL, add this line:
+# Sitemap: https://YOUR-DOMAIN/sitemap.xml
