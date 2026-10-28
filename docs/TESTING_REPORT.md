@@ -6,7 +6,7 @@ Date: 23 October 2026. Tested by running the production bundle in headless Chrom
 
 `npm install` was blocked in the build environment (the npm registry returned a policy 403), so Vite itself could not be run there. The app was bundled with **esbuild** instead, using the same source files, and the result was served from a local static server. Details are in the "Not tested" list below.
 
-## Tested and passing (55 checks, 55 passed)
+## Tested and passing (66 checks, 66 passed after the design update)
 
 | Area | Result |
 | --- | --- |
@@ -31,6 +31,10 @@ Date: 23 October 2026. Tested by running the production bundle in headless Chrom
 | Reduced motion: all content visible immediately, diagram dots not rendered, smooth scroll off | Pass |
 | No JavaScript: fallback text with contact details is in the HTML | Pass |
 | 404 page renders | Pass |
+| Design update: old status pill gone; renewal alert cycles; diagram shows 6 labelled packets | Pass |
+| Design update: phone mock counts up to 2,077, bars grow, notification appears | Pass |
+| Design update: skills filter lights only the chosen project's tools | Pass |
+| Design update: timeline line grows with scroll and milestones light up | Pass |
 
 Screenshots of desktop, mobile and light theme were also reviewed by eye.
 
@@ -38,7 +42,7 @@ Screenshots of desktop, mobile and light theme were also reviewed by eye.
 
 - **`npm run dev`, `npm run build` with Vite, and `tsc` type checking.** The npm registry was unreachable from the build environment, so the Vite build and TypeScript type check have not been run. Please run `npm install && npm run build` once; if the type check reports anything, it will be small and local.
 - **Real SubGuard screenshots.** The sandbox could not reach your SubGuard website, so the screenshot URLs were not loaded. The fallback placeholder was tested instead. Please open the live site and confirm the images show.
-- **Google Fonts.** Blocked in the sandbox, so the page was rendered with fallback fonts. Inter, Space Grotesk and JetBrains Mono will load for real visitors.
+- **Google Fonts.** Blocked in the sandbox, so every screenshot used fallback fonts (Georgia, system sans). Fraunces, Instrument Sans and IBM Plex Mono will load for real visitors, so the live look will be slightly different from the screenshots I reviewed.
 - **Real devices and other browsers** (Safari, Firefox, iPhone, Android phones). Only Chromium was used.
 - **Opening the mail app** from the email button (only the link target was checked).
 - **Lighthouse and Core Web Vitals scores.** Not measured, so no scores are claimed.

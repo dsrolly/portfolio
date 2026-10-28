@@ -2,46 +2,47 @@
 :root {
   color-scheme: dark;
 
-  --bg: #0a0b0d;
-  --bg-alt: #0e1013;
-  --surface: #13161a;
-  --surface-2: #181c21;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.16);
-  --text: #eceef0;
-  --text-soft: #b4bac2;
-  --muted: #8a919b;
-  --accent: #38bdf8;
-  --accent-strong: #7dd3fc;
-  --on-accent: #04141d;
-  --glow: rgba(56, 189, 248, 0.14);
+  /* warm ink + saffron, instead of the usual cold black + cyan */
+  --bg: #100f0d;
+  --bg-alt: #14120f;
+  --surface: #1a1713;
+  --surface-2: #221e18;
+  --line: rgba(255, 238, 214, 0.1);
+  --line-strong: rgba(255, 238, 214, 0.2);
+  --text: #f2ede4;
+  --text-soft: #c4bbad;
+  --muted: #8e857a;
+  --accent: #ff7a3d;
+  --accent-strong: #ffa57a;
+  --on-accent: #1b0d04;
+  --glow: rgba(255, 122, 61, 0.14);
 
-  --font-display: 'Space Grotesk', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --font-display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
 
   --gutter: clamp(20px, 4vw, 40px);
-  --maxw: 1160px;
-  --radius: 14px;
-  --radius-sm: 10px;
-  --header-h: 64px;
+  --maxw: 1180px;
+  --radius: 8px;
+  --radius-sm: 6px;
+  --header-h: 68px;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 :root[data-theme='light'] {
   color-scheme: light;
 
-  --bg: #f5f6f8;
-  --bg-alt: #ecedf1;
-  --surface: #ffffff;
-  --surface-2: #f1f2f5;
-  --line: rgba(10, 14, 20, 0.1);
-  --line-strong: rgba(10, 14, 20, 0.2);
-  --text: #0f1216;
-  --text-soft: #39414c;
-  --muted: #5d6672;
-  --accent: #0369a1;
-  --accent-strong: #075985;
+  --bg: #f3eee4;
+  --bg-alt: #ebe5d8;
+  --surface: #fbf8f1;
+  --surface-2: #f1ebdf;
+  --line: rgba(40, 28, 10, 0.12);
+  --line-strong: rgba(40, 28, 10, 0.24);
+  --text: #1d1812;
+  --text-soft: #4a4136;
+  --muted: #6d6254;
+  --accent: #c2410c;
+  --accent-strong: #9a3412;
   --on-accent: #ffffff;
-  --glow: rgba(3, 105, 161, 0.1);
+  --glow: rgba(194, 65, 12, 0.1);
 }

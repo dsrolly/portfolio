@@ -1,21 +1,38 @@
+import type { PointerEvent } from 'react'
 import { profile } from '../../data/profile'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { ArchitectureDiagram } from '../animations/ArchitectureDiagram'
 import { CvButton } from '../ui/CvButton'
 import { Icon } from '../ui/Icon'
+import { RenewalTicker } from '../ui/RenewalTicker'
 import { Reveal } from '../ui/Reveal'
 
 export function Hero() {
+  const reduced = useReducedMotion()
+
+  // A soft light follows the pointer across the hero. Skipped for reduced motion and touch screens.
+  const onMove = (e: PointerEvent<HTMLElement>) => {
+    if (reduced || e.pointerType !== 'mouse') return
+    const box = e.currentTarget.getBoundingClientRect()
+    e.currentTarget.style.setProperty('--mx', `${e.clientX - box.left}px`)
+    e.currentTarget.style.setProperty('--my', `${e.clientY - box.top}px`)
+  }
+
+  const [first, ...rest] = profile.name.split(' ')
+
   return (
-    <section id="top" className="hero" aria-labelledby="hero-title">
+    <section id="top" className="hero" aria-labelledby="hero-title" onPointerMove={onMove}>
+      <div className="hero-spot" aria-hidden="true" />
       <div className="hero-grid" aria-hidden="true" />
       <div className="container hero-inner">
         <div className="hero-copy">
-          <Reveal as="p" className="status-pill">
-            <span className="status-dot" aria-hidden="true" />
-            Open to software development internships
+          <Reveal>
+            <RenewalTicker />
           </Reveal>
           <Reveal as="h1" delay={60} className="hero-title">
-            <span id="hero-title">{profile.name}</span>
+            <span id="hero-title">
+              <span className="ht-a">{first}</span> <em>{rest.join(' ')}</em>
+            </span>
           </Reveal>
           <Reveal as="p" delay={120} className="hero-role">
             {profile.role}
@@ -52,7 +69,7 @@ export function Hero() {
 
         <Reveal delay={200} className="hero-visual">
           <ArchitectureDiagram label="Simplified architecture of SubGuard: Compose UI, ViewModel, data layer, and the services behind it" />
-          <p className="hero-visual-note">How SubGuard, my Android app, fits together</p>
+          <p className="hero-visual-note">SubGuard under the hood</p>
         </Reveal>
       </div>
     </section>

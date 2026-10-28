@@ -10,11 +10,11 @@ export const profile = {
   name: 'Davinder Singh',
   initials: 'DS',
   role: 'MCA student · Android & full-stack developer',
-  headline: 'I build Android apps and database-driven systems, then ship them.',
+  headline: 'Android apps, and the databases behind them.',
   intro:
-    'MCA student at Punjabi University, Patiala. My work so far: SubGuard, a Kotlin and Jetpack Compose subscription tracker with a live APK, plus Python and PostgreSQL systems built around real data models.',
+    'SubGuard, my latest app, warns you before a subscription renews, and it is live as an APK. Before it came a hospital system in Flask and PostgreSQL, and a relief-resource database. I study MCA at Punjabi University, Patiala.',
   interests:
-    'Android with Kotlin, backend and databases, and moving towards full-stack with JavaScript and Node.js. Looking for an internship where I can contribute to real projects.',
+    'Next on my list: JavaScript and Node.js, so I can build the web side too. I am looking for an internship where I can work on real projects.',
   email: 'ds.infoquest@gmail.com',
   github: 'https://github.com/dsrolly',
   linkedin: 'https://www.linkedin.com/in/dsrolly',
@@ -28,9 +28,9 @@ export const profile = {
 
 export const about = {
   paragraphs: [
-    'I am an MCA student at Punjabi University, Patiala (2025 to present), with a BCA from Desh Bhagat College, Bardwal. I learn by building complete things, not by collecting tutorials.',
-    'My projects fall into two tracks. On the data side: a disaster relief allocation system designed in RDBMS, and a hospital management system in Flask and PostgreSQL with a Scikit-learn prediction model. On the Android side: SubGuard, which I developed end to end in Kotlin and Jetpack Compose and released as an APK with its own website, and Voice2Civic, a civic-reporting app I developed in Kotlin.',
-    'SubGuard is where the fundamentals clicked: Firebase Authentication for sign-in, Cloud Firestore for user data, WorkManager for background renewal reminders, DataStore for settings and Retrofit for live exchange rates. I am now learning JavaScript and Node.js to carry the same habits into full-stack web work.',
+    'I am Davinder, an MCA student at Punjabi University, Patiala. I did my BCA at Desh Bhagat College, Bardwal, and I learn best when there is something real to finish.',
+    'My database work started with a disaster-relief allocation system and grew into a hospital management app in Flask and PostgreSQL, with a Scikit-learn model for disease prediction. On Android I built SubGuard from the first screen to the released APK, and Voice2Civic, a civic-reporting app in Kotlin. The idea for Voice2Civic came from a classmate. The development was mine.',
+    'SubGuard is where it came together: Firebase Authentication for sign-in, Firestore for data, WorkManager for reminders, DataStore for settings and Retrofit for exchange rates. Now I am learning JavaScript and Node.js to bring the same habits to full-stack web work.',
   ],
   facts: [
     { label: 'Studying', value: 'MCA, Punjabi University, Patiala' },

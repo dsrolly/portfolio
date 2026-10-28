@@ -20,15 +20,38 @@ body {
   overflow-x: hidden;
 }
 
+/* Fine paper grain over everything. It is what makes flat colour feel printed, not rendered. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+[data-theme='light'] body::before {
+  mix-blend-mode: multiply;
+  opacity: 0.08;
+}
+
 h1,
 h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  line-height: 1.1;
+  font-weight: 500;
+  line-height: 1.08;
   letter-spacing: -0.02em;
   margin: 0;
-  font-weight: 600;
+}
+h1 em,
+h2 em,
+h3 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-strong);
 }
 
 p {
@@ -98,10 +121,10 @@ a {
 @media (prefers-reduced-motion: no-preference) {
   .js .reveal {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(22px);
     transition:
-      opacity 0.7s var(--ease) var(--reveal-delay, 0ms),
-      transform 0.7s var(--ease) var(--reveal-delay, 0ms);
+      opacity 0.8s var(--ease) var(--reveal-delay, 0ms),
+      transform 0.8s var(--ease) var(--reveal-delay, 0ms);
   }
   .js .reveal.is-visible {
     opacity: 1;
@@ -127,33 +150,37 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 12px 20px;
-  border-radius: var(--radius-sm);
+  gap: 10px;
+  padding: 13px 22px;
+  border-radius: 999px;
   border: 1px solid transparent;
   font: 600 0.95rem/1.2 var(--font-body);
   cursor: pointer;
   transition:
-    transform 0.2s var(--ease),
+    transform 0.25s var(--ease),
     background 0.2s,
     border-color 0.2s,
     color 0.2s;
 }
-.btn .icon {
-  transition: transform 0.2s var(--ease);
-}
 .btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 .btn-primary {
   background: var(--accent);
   color: var(--on-accent);
+  padding-right: 12px;
 }
-.btn-primary:hover {
-  background: var(--accent-strong);
+.btn-primary .icon {
+  width: 26px;
+  height: 26px;
+  padding: 5px;
+  border-radius: 50%;
+  background: var(--on-accent);
+  color: var(--accent);
+  transition: transform 0.25s var(--ease);
 }
 .btn-primary:hover .icon {
-  transform: translateX(2px);
+  transform: translateX(3px) rotate(-8deg);
 }
 .btn-ghost {
   background: transparent;
@@ -164,9 +191,6 @@ a {
   border-color: var(--accent);
   color: var(--accent-strong);
 }
-[data-theme='light'] .btn-ghost:hover {
-  color: var(--accent);
-}
 
 .link-inline {
   display: inline-flex;
@@ -174,13 +198,15 @@ a {
   gap: 8px;
   color: var(--text-soft);
   font-weight: 500;
-  transition: color 0.2s;
+  background: linear-gradient(var(--accent), var(--accent)) 0 100% / 0 1px no-repeat;
+  padding-bottom: 2px;
+  transition:
+    color 0.2s,
+    background-size 0.3s var(--ease);
 }
 .link-inline:hover {
-  color: var(--accent-strong);
-}
-[data-theme='light'] .link-inline:hover {
-  color: var(--accent);
+  color: var(--text);
+  background-size: 100% 1px;
 }
 
 .icon-btn {
@@ -188,8 +214,8 @@ a {
   place-items: center;
   width: 40px;
   height: 40px;
-  border-radius: 10px;
-  border: 1px solid var(--line);
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
   background: transparent;
   color: var(--text-soft);
   cursor: pointer;
@@ -221,7 +247,7 @@ a {
 .progress {
   position: fixed;
   inset: 0 0 auto 0;
-  height: 2px;
+  height: 3px;
   z-index: 60;
   --progress: 0;
 }
@@ -243,7 +269,7 @@ a {
   border-bottom: 1px solid transparent;
 }
 .site-header.is-solid {
-  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
   border-bottom-color: var(--line);
   backdrop-filter: blur(10px);
 }
@@ -259,25 +285,26 @@ a {
   align-items: center;
   gap: 12px;
   font-family: var(--font-display);
-  font-weight: 600;
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 .brand-mark {
   display: grid;
   place-items: center;
   width: 34px;
   height: 34px;
-  border-radius: 9px;
-  border: 1px solid var(--line-strong);
-  font-size: 0.85rem;
-  color: var(--accent-strong);
-  letter-spacing: 0.02em;
-}
-[data-theme='light'] .brand-mark {
-  color: var(--accent);
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 .nav-links {
   display: flex;
-  gap: 6px;
+  gap: 4px;
 }
 .nav-link {
   position: relative;
@@ -287,24 +314,24 @@ a {
   color: var(--muted);
   transition: color 0.2s;
 }
-.nav-link::after {
+.nav-link::before {
   content: '';
   position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 2px;
-  height: 2px;
-  border-radius: 2px;
+  left: 2px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
   background: var(--accent);
-  transform: scaleX(0);
+  transform: translateY(-50%) scale(0);
   transition: transform 0.25s var(--ease);
 }
 .nav-link:hover,
 .nav-link.is-active {
   color: var(--text);
 }
-.nav-link.is-active::after {
-  transform: scaleX(1);
+.nav-link.is-active::before {
+  transform: translateY(-50%) scale(1);
 }
 .header-actions {
   display: flex;
@@ -327,7 +354,7 @@ a {
   display: block;
   padding: 14px 0;
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   border-bottom: 1px solid var(--line);
 }
 
@@ -347,7 +374,7 @@ a {
 
 /* ── Sections ── */
 .section {
-  padding-block: clamp(72px, 10vw, 136px);
+  padding-block: clamp(76px, 10vw, 140px);
   scroll-margin-top: calc(var(--header-h) - 8px);
 }
 .section-alt {
@@ -355,13 +382,34 @@ a {
   border-block: 1px solid var(--line);
 }
 .section-head {
-  max-width: 760px;
   margin-bottom: clamp(36px, 5vw, 64px);
 }
+
+/* running head: label ———— number, like a printed page */
+.runhead {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: clamp(24px, 3vw, 40px);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.runhead-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--line-strong);
+}
+.runhead-num {
+  color: var(--accent-strong);
+}
+
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 14px;
@@ -370,15 +418,21 @@ a {
   color: var(--accent-strong);
   margin-right: 6px;
 }
-[data-theme='light'] .eyebrow span {
-  color: var(--accent);
-}
+
 .section-title {
-  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  font-size: clamp(2.3rem, 5.2vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  max-width: 20ch;
+  text-wrap: balance;
+}
+.hero-headline,
+.contact-title {
+  text-wrap: balance;
 }
 .section-lead {
-  margin-top: 18px;
-  max-width: 640px;
+  margin-top: 20px;
+  max-width: 56ch;
   color: var(--text-soft);
 }
 
@@ -391,17 +445,14 @@ a {
   display: inline-block;
   padding: 4px 10px;
   border: 1px solid var(--line-strong);
-  border-radius: 999px;
+  border-radius: 4px;
   font-family: var(--font-mono);
   font-size: 0.74rem;
   color: var(--text-soft);
 }
 .chip-status {
-  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
   color: var(--accent-strong);
-}
-[data-theme='light'] .chip-status {
-  color: var(--accent);
 }
 
 .bullets {
@@ -419,7 +470,7 @@ a {
   position: absolute;
   left: 0;
   top: 0.72em;
-  width: 8px;
+  width: 9px;
   height: 1px;
   background: var(--accent);
 }

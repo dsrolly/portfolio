@@ -49,7 +49,7 @@ export const projects: Project[] = [
       {
         id: 'problem',
         label: 'Problem',
-        title: 'Subscriptions hide in plain sight',
+        title: 'Money leaves quietly',
         body: 'Streaming, cloud storage, a gym membership: recurring payments are spread across apps, UPI and cards. Free trials slide into paid plans, renewals arrive unnoticed, and a weekly price and a yearly price are hard to compare. People end up paying for things they forgot about.',
         bullets: [
           'Who it is for: anyone managing several recurring plans, digital or offline',
@@ -63,7 +63,7 @@ export const projects: Project[] = [
       {
         id: 'solution',
         label: 'Solution',
-        title: 'One place for every recurring payment',
+        title: 'Everything that renews, in one list',
         body: 'SubGuard is built around three questions: what renews soon, what is my real monthly spend, and how do I stop paying for what I do not use.',
         bullets: [
           'Renewal alerts 7, 3, 1 days before and on the day, each one optional',
@@ -82,7 +82,7 @@ export const projects: Project[] = [
       {
         id: 'architecture',
         label: 'Architecture',
-        title: 'MVVM with a small, clear data layer',
+        title: 'How the pieces fit',
         body: 'The UI is written in Jetpack Compose and talks only to ViewModels. The data layer brings together the services the app depends on. This diagram is a simplified view, and you can hover or focus each block.',
         bullets: [
           'Compose UI observes state from ViewModels (MVVM)',
@@ -95,8 +95,8 @@ export const projects: Project[] = [
       {
         id: 'decisions',
         label: 'Decisions',
-        title: 'Choices that shaped the app',
-        body: 'A few decisions that were mine to make, and why.',
+        title: 'Calls I made along the way',
+        body: 'A few decisions that were mine to make, and why I made them.',
         bullets: [
           'Reminders run through WorkManager and read the user’s chosen reminder days from DataStore, so a settings change affects the alerts that follow',
           'Guest mode keeps data in memory only, which is stated clearly in the app’s FAQ; signing in is what enables saving and backup',
@@ -111,7 +111,7 @@ export const projects: Project[] = [
       {
         id: 'outcome',
         label: 'Status',
-        title: 'Shipped, installable, documented',
+        title: 'Where it stands today',
         body: 'SubGuard v1.0 is available as a free APK for Android 8.0 and above. The product website includes an app tour, help centre, blog guides and policies. Source code is in a private repository, so it is not linked here.',
         visual: {
           type: 'image',

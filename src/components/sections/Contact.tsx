@@ -9,15 +9,18 @@ export function Contact() {
   return (
     <section id="contact" className="section section-alt contact" aria-labelledby="contact-title">
       <div className="container">
-        <Reveal as="p" className="eyebrow">
-          <span>06</span> Contact
+        <Reveal className="runhead">
+          <span>Contact</span>
+          <span className="runhead-rule" aria-hidden="true" />
+          <span className="runhead-num">06</span>
         </Reveal>
         <Reveal as="h2" delay={60} className="contact-title">
-          <span id="contact-title">Hiring for an internship, or building something? Let’s talk.</span>
+          <span id="contact-title">
+            Got an internship, or something worth <em>building</em>? Write to me.
+          </span>
         </Reveal>
         <Reveal as="p" delay={120} className="section-lead">
-          I am looking for a software development internship where I can contribute to real projects. Email is the
-          fastest way to reach me.
+          I am looking for a software development internship where I can work on real projects. Email is the fastest way to reach me, and I reply to everything.
         </Reveal>
 
         <Reveal delay={180}>

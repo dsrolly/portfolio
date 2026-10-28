@@ -4,6 +4,8 @@ A single-page portfolio built with **React + TypeScript + Vite** and plain CSS. 
 
 Only two runtime dependencies: `react` and `react-dom`.
 
+Fonts (Fraunces, Instrument Sans, IBM Plex Mono) load from Google Fonts, so the first view needs internet. If they cannot load, the site falls back to Georgia and system fonts.
+
 ## Run it
 
 ```bash
@@ -26,6 +28,9 @@ Requires Node 18 or newer.
 | Colours, fonts, spacing, light theme | `src/styles/tokens.css` |
 | Layout and section styling | `src/styles/base.css`, `src/styles/sections.css` |
 | Architecture diagram (hero and case study) | `src/components/animations/ArchitectureDiagram.tsx` |
+| Animated phone on the SubGuard case study (sample data) | `src/components/animations/PhoneMock.tsx` |
+| Sample renewal alert in the hero | `src/components/ui/RenewalTicker.tsx` (edit the `alerts` list) |
+| Which skills light up for which project | `filters` list in `src/components/sections/Skills.tsx` |
 | Page title, description, social preview tags | `index.html` |
 | CV file | `public/files/Davinder-Singh-CV.pdf` (replace the file, keep the name) |
 | Favicon, social preview image | `public/favicon.svg`, `public/og-image.png` |

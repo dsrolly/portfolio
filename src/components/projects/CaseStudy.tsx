@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { Project, StoryStep } from '../../types'
 import { ArchitectureDiagram } from '../animations/ArchitectureDiagram'
+import { PhoneMock } from '../animations/PhoneMock'
 import { Icon } from '../ui/Icon'
 import { ProjectImage } from '../ui/ProjectImage'
 import { Reveal } from '../ui/Reveal'
@@ -49,6 +50,7 @@ export function CaseStudy({ project }: { project: Project }) {
 
   return (
     <article className="case" aria-labelledby={`${project.id}-heading`}>
+      <div className="case-top">
       <header className="case-head">
         <Reveal as="p" className="case-category">
           {project.category}
@@ -86,6 +88,12 @@ export function CaseStudy({ project }: { project: Project }) {
           ))}
         </Reveal>
       </header>
+      {project.id === 'subguard' ? (
+        <Reveal delay={160} className="case-phone">
+          <PhoneMock />
+        </Reveal>
+      ) : null}
+      </div>
 
       <div className="story">
         <div className="story-sticky" aria-label={`${project.title} visuals`}>

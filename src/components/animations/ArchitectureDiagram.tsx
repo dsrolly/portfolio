@@ -28,20 +28,37 @@ interface Edge {
   from: string
   to: string
   d: string
+  /** Short word shown on the packet travelling along this edge. */
+  label: string
+  /** True when the packet travels back up, towards the UI. */
+  up: boolean
 }
 
 const byId = Object.fromEntries(nodes.map((n) => [n.id, n])) as Record<string, Node>
 const cx = (n: Node) => n.x + n.w / 2
 
+const leafMeta = {
+  firebase: { label: 'sync', up: false },
+  datastore: { label: 'prefs', up: true },
+  retrofit: { label: 'rates', up: true },
+  work: { label: 'schedule', up: false },
+} as const
+
 const edges: Edge[] = [
-  { id: 'e-ui-vm', from: 'ui', to: 'vm', d: `M${cx(byId.ui)} ${byId.ui.y + byId.ui.h} V${byId.vm.y}` },
-  { id: 'e-vm-data', from: 'vm', to: 'data', d: `M${cx(byId.vm)} ${byId.vm.y + byId.vm.h} V${byId.data.y}` },
-  ...(['firebase', 'datastore', 'retrofit', 'work'] as const).map((leaf) => {
+  { id: 'e-ui-vm', from: 'ui', to: 'vm', d: `M${cx(byId.ui)} ${byId.ui.y + byId.ui.h} V${byId.vm.y}`, label: 'event', up: false },
+  { id: 'e-vm-data', from: 'vm', to: 'data', d: `M${cx(byId.vm)} ${byId.vm.y + byId.vm.h} V${byId.data.y}`, label: 'query', up: false },
+  ...(['firebase', 'datastore', 'retrofit', 'work'] as const).map((leaf): Edge => {
     const sx = cx(byId.data)
     const sy = byId.data.y + byId.data.h
     const tx = cx(byId[leaf])
     const ty = byId[leaf].y
-    return { id: `e-data-${leaf}`, from: 'data', to: leaf, d: `M${sx} ${sy} C${sx} ${sy + 34} ${tx} ${ty - 34} ${tx} ${ty}` }
+    return {
+      id: `e-data-${leaf}`,
+      from: 'data',
+      to: leaf,
+      d: `M${sx} ${sy} C${sx} ${sy + 34} ${tx} ${ty - 34} ${tx} ${ty}`,
+      ...leafMeta[leaf],
+    }
   }),
 ]
 
@@ -72,13 +89,37 @@ export function ArchitectureDiagram({ label }: { label: string }) {
         </g>
 
         {!reduced &&
-          edges.map((e, i) => (
-            <circle key={`dot-${e.id}`} r="2.6" className="arch-dot">
-              <animateMotion dur={`${3 + (i % 3) * 0.6}s`} begin={`${i * 0.45}s`} repeatCount="indefinite">
-                <mpath href={`#${uid}-${e.id}`} />
-              </animateMotion>
-            </circle>
-          ))}
+          edges.map((e, i) => {
+            const w = e.label.length * 5.4 + 16
+            const dur = `${4 + (i % 3) * 0.6}s`
+            const begin = `${i * 1.15}s`
+            return (
+              <g key={`packet-${e.id}`} className="arch-packet" opacity="0" aria-hidden="true">
+                <rect x={-w / 2} y={-8} width={w} height={16} rx={8} />
+                <text y={3.2} textAnchor="middle">
+                  {e.label}
+                </text>
+                <animateMotion
+                  dur={dur}
+                  begin={begin}
+                  repeatCount="indefinite"
+                  calcMode="linear"
+                  keyPoints={e.up ? '1;0' : '0;1'}
+                  keyTimes="0;1"
+                >
+                  <mpath href={`#${uid}-${e.id}`} />
+                </animateMotion>
+                <animate
+                  attributeName="opacity"
+                  values="0;1;1;0"
+                  keyTimes="0;0.14;0.74;0.9"
+                  dur={dur}
+                  begin={begin}
+                  repeatCount="indefinite"
+                />
+              </g>
+            )
+          })}
 
         {nodes.map((n) => (
           <g
